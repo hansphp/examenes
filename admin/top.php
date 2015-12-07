@@ -12,11 +12,13 @@
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../css/panel.css" rel="stylesheet">
     <script src="../js/jquery-2.1.4.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.dataTables.min.js"></script>
   </head>
 
   <body>
@@ -35,8 +37,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="inicio.php">Inicio</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="inicio.php">Inicio</a></li>
+            <li><a href="alumnos.php">Alumnos</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
