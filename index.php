@@ -1,4 +1,24 @@
-<!DOCTYPE html>
+<?php
+require_once('config.php');
+
+if(isset($_POST['cuenta'])){	
+	$ssql = "SELECT * FROM Alumnos WHERE num_cuenta LIKE '%{$_POST['cuenta']}%'";
+	$error = "";
+
+	if($rs_access = odbc_exec ($conn_access, $ssql)){ 
+		$fila = odbc_fetch_object($rs_access);
+		if(isset($fila->Nombre) && !empty($fila->Nombre)){
+			$_SESSION['alumno'] = $fila;
+			header('Location: inicio.php');
+			exit;
+		}else{
+			$error = "Clave o usuario incorrecto.";
+		}
+	}else{ 
+		die("Error al ejecutar la sentencia SQL"); 
+	}
+}
+?><!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
@@ -19,10 +39,19 @@
   <body>
 
     <div class="container">
-      <form class="form-signin">
+    <?php
+	if(!empty($error)){
+	?>
+    <div class="alert alert-danger" role="alert">
+        <?php echo $error; ?>
+      </div>
+    <?php
+	}
+	?>
+      <form class="form-signin" method="post">
         <h2 class="form-signin-heading">Evaluaciones</h2>
-        <label for="inputEmail" class="sr-only">Número de cuenta</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Número de cuenta" required autofocus>
+        <label for="cuenta" class="sr-only">Número de cuenta</label>
+        <input type="text" id="cuenta" name="cuenta" class="form-control" placeholder="Número de cuenta" required autofocus>
 		<hr>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar evaluación</button>
       </form>

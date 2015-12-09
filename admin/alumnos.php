@@ -74,15 +74,16 @@ $(document).ready(function(){
 		var nombre = button.data('nombre');
 		var apellido = button.data('apellido');
 		var modal = $(this);
-		modal.find('.modal-title').html('Editar: <b>' + nombre + ' ' + apellido + '</b>');
 		modal.find('.modal-body input#data-cuenta').val(cuenta);
 		modal.find('.modal-body input#data-nombre').val(nombre);
 		modal.find('.modal-body input#data-apellido').val(apellido);
 		
 		if(cuenta > 0){
+			modal.find('.modal-title').html('Editar: <b>' + nombre + ' ' + apellido + '</b>');
 			modal.find('.modal-body div.alert').show();
 			modal.find('.modal-body input#data-action').val('editar');
 		}else{
+			modal.find('.modal-title').html('Nuevo alumno');
 			modal.find('.modal-body div.alert').hide();
 			modal.find('.modal-body input#data-action').val('agregar');
 		}
